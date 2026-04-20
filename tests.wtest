@@ -1,0 +1,37 @@
+import feroz.*
+import caperucita.*
+import abuelita.*
+import cazador.*
+
+describe "Finales del lobo" {
+    
+    test "Final 1: se come todo y no está saludable" {
+        feroz.crisis()
+
+        feroz.comer(abuelita)
+        feroz.comer(caperucita)
+        feroz.comer(cazador)
+
+        assert.notThat(feroz.estaSaludable())
+    }
+
+    test "Final 2: el cazador provoca crisis y no está saludable" {
+        feroz.crisis()
+
+        feroz.comer(abuelita)
+        feroz.comer(caperucita)
+        cazador.enfrentarA(feroz)
+
+        assert.notThat(feroz.estaSaludable())
+    }
+
+    test "Final 3: sí está saludablw" {
+        feroz.crisis()
+
+        feroz.comer(abuelita)
+        feroz.correr()
+        feroz.comer(caperucita)
+
+        assert.that(feroz.estaSaludable())
+    }
+}
